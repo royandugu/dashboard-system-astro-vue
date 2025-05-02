@@ -7,6 +7,7 @@ const validUser = ref(false);
 
 
 watch([isLoading, validUser],([loading, auth]) => {
+    console.log("here");
     if (!loading && !auth) {
         const router = useRouter();
         router.push("/login"); 
