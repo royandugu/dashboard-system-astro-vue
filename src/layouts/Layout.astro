@@ -1,3 +1,7 @@
+---
+import PiniaWrapper from "../vue/layouts/PiniaWrapper.vue"
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,7 +12,9 @@
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<slot />
+		<PiniaWrapper>
+			<slot />
+		</PiniaWrapper>
 	</body>
 </html>
 
