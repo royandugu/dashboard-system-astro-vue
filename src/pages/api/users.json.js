@@ -6,9 +6,12 @@ export const GET = async()=>{
     })
 }
 
-export const POST = async(request)=>{
+export const POST = async({request})=>{
     try{
+        console.log("request is",request);
+        console.log("request body is",request.body);
         const data=await request.json();
+        console.log("data is",data);
         if(!data.username || !data.rollNumber){
             return new Response("Missing required fields: name, email", { status: 400 });
         }
@@ -18,8 +21,10 @@ export const POST = async(request)=>{
             rollNumber: data.rollNumber
         }
         users.users.push(newUser);
+        return new Response("Sucesfully added", { status: 201 });
     }
     catch(err){
         console.log("error is",err);
+        return new Response("Internal server error", { status: 500 });
     }
 }
