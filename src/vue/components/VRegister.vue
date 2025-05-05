@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import router from './router';
+import bcrypt from 'bcryptjs';
 
 const username = ref('');
 const password = ref('');
@@ -35,8 +35,11 @@ const changeRollNumber = (e) => {
 };
 
 const onFormSubmission = async (e) => {
-    let toProceedFurther = true;
     e.preventDefault();
+
+    let hashedPassword = null;
+
+    let toProceedFurther = true;
     if (username.value === '' || username.value === ' ') {
         usernameError.value = true;
         toProceedFurther = false;
@@ -44,7 +47,6 @@ const onFormSubmission = async (e) => {
     if (password.value === '' || password.value === ' ') {
         passwordError.value = true;
         toProceedFurther = false;
-
     }
     if (rePassword.value === '' || rePassword.value === ' ') {
         repasswordError.value = true;
@@ -61,9 +63,12 @@ const onFormSubmission = async (e) => {
         toProceedFurther = false;
     }
     if (toProceedFurther) {
+        const salt = bcrypt.genSaltSync(10);
+        const hashedPassword = bcrypt.hashSync(password.value, salt);
+
         const body = {
             "username": username.value,
-            "password": password.value,
+            "password": hashedPassword,
             "rollNumber": rollNumber.value
         }
         loading.value = true;
@@ -73,9 +78,11 @@ const onFormSubmission = async (e) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(body)
-        }) 
-        if(response.status===201){
-            router.push("/dashboard");
+        })
+        if (response.status === 201) {
+            sessionStorage.setItem("username", username.value);
+            sessionStorage.setItem("password", hashedPassword);
+            window.location.href = "/dashboard";
         }
     }
 };
