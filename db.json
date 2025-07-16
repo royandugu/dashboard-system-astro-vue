@@ -1,27 +1,9 @@
 {
   "users": [
     {
-      "username": "Royan",
-      "rollNumber": 0,
-      "password": 123,
-      "id": "8255"
-    },
-    {
-      "id": "f489",
+      "id": "191a",
       "username": "royandugu99009@gmail.com",
-      "password": "123",
-      "rollNumber": "2"
-    },
-    {
-      "id": "5d43",
-      "username": "royandugu99009@gmail.com",
-      "password": "123",
-      "rollNumber": "2"
-    },
-    {
-      "id": "d82f",
-      "username": "royandugu99009@gmail.com",
-      "password": "123",
+      "password": "$2b$10$0pB1ydzzcMmI6F6IgZOMZ.6QajVEOEQ7VfshGeW0khIcvfHxL6GzC",
       "rollNumber": "2"
     }
   ]

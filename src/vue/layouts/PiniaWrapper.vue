@@ -8,3 +8,16 @@ provide('pinia', pinia)
 <template>
     <slot />
 </template>
+
+<style>
+.error-text{
+    color:red;
+}
+input.red-border {
+    border-color: red;
+}
+.disabled-button {
+    pointer-events: none;
+    opacity: .5;
+}
+</style>

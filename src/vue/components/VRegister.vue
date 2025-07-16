@@ -109,14 +109,7 @@ const onFormSubmission = async (e) => {
 </template>
 
 <style>
-.disabled-button {
-    pointer-events: none;
-    opacity: .5;
-}
 
-input.red-border {
-    border-color: red;
-}
 
 .register-form input {
     margin-bottom: 10px;
